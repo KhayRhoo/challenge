@@ -1,13 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
+
+import {Home} from './components/home';
+import {Head} from './components/head';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <>
+      <App />
+      <Router histor={browserHistory}>
+        <Route path={"/"} component={root}>
+          <IndexRoute component={Home}/>
+          <Route path={"home"} component={Home}/>
+          <Route path={"shop"} component={Shop}/>
+        </Route>
+        <Route path={"home-single"} component={Home}/>
+      </Router>
+    </>
   </React.StrictMode>
 );
 
